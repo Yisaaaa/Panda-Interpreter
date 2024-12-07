@@ -1,17 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"os/user"
+	"panda/repl"
+)
 
 func main() {
-	a := `sadf
-			fas 
-		df
-		`
-	for b := range a {
-		if a[b] == '\t' {
-			fmt.Println("Tab")
-		} else if a[b] == '\n' {
-			fmt.Println("Newline")
-		}
+	user, err := user.Current()
+	if err != nil {
+		panic("err")
 	}
+	fmt.Printf("Hello %s, welcome to panda repl!\n", user.Username)
+	fmt.Println("Feel free to type any command")
+	repl.Start(os.Stdin, os.Stdout)
 }
