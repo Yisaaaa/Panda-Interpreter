@@ -1,6 +1,7 @@
 package token
 
 // Defining the Token data structure
+
 type TokenType string
 
 type Token struct {
